@@ -1,18 +1,24 @@
-import React from "react";
+import { useEffect } from "react";
 
 const TaxonomyList = () => {
-  const str = `Animals & Pet Supplies
-Animals & Pet Supplies > Live Animals
-Animals & Pet Supplies > Pet Supplies
-Animals & Pet Supplies > Pet Supplies > Bird Supplies
-Animals & Pet Supplies > Pet Supplies > Bird Supplies > Bird Cage Accessories
-Animals & Pet Supplies > Pet Supplies > Bird Supplies > Bird Cage Accessories > Bird Cage Bird Baths
-Animals & Pet Supplies > Pet Supplies > Bird Supplies > Bird Cage Accessories > Bird Cage Food & Water Dishes
-Animals & Pet Supplies > Pet Supplies > Dog Supplies
-Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Apparel`;
+  useEffect(() => {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
 
-  const dd = str.split(">");
-  console.log(dd);
+    fetch(
+      "https://www.google.com/basepages/producttype/taxonomy.en-US.txt",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => {
+        // console.log("result", result);
+        const line = result.split("\n");
+        console.log("line", line);
+      })
+      .catch((error) => console.log("error", error));
+  }, []);
   return <div>TaxonomyList</div>;
 };
 
