@@ -63,7 +63,7 @@ const BasicForm = () => {
               <FlexChild>
                 <TextField
                   name="Password"
-                  type="text"
+                  type="number"
                   placeHolder="enter your password"
                   value={password}
                   onChange={(e) => handlePassword(e)}
