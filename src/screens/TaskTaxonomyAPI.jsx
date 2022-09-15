@@ -2,7 +2,7 @@ import TaxonomyListSelect from "../components/TaxonomyListSelect";
 
 const TaskDay2 = () => {
   return (
-    <div>
+    <div className="main-container">
       <TaxonomyListSelect />
     </div>
   );
