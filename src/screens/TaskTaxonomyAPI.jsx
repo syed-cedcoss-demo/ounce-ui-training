@@ -1,4 +1,4 @@
-import TaxonomyListSelect from "../components/DayTwoTask/TaxonomyListSelect";
+import TaxonomyListSelect from "../components/TaxonomyListSelect";
 
 const TaskDay2 = () => {
   return (
