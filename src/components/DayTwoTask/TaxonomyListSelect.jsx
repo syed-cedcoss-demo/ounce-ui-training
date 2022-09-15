@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import allData from "./data";
 
-const TaxonomyList = () => {
+const TaxonomyListSelect = () => {
   const [data, setData] = useState();
   const [fLavel, setFLevel] = useState();
   const [sLavel, setSLevel] = useState();
@@ -128,4 +128,4 @@ const TaxonomyList = () => {
   );
 };
 
-export default TaxonomyList;
+export default TaxonomyListSelect;
