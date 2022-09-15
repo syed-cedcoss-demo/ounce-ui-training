@@ -10,11 +10,13 @@ const TaxonomyListSelect = () => {
   const [tLevel, setTLevel] = useState();
   const [fourLevel, setFourLevel] = useState();
   const [fiveLevel, setFiveLevel] = useState();
+  const [sixLevel, setSixLevel] = useState();
   const [lbl1, setLbl1] = useState();
   const [lbl2, setLbl2] = useState();
   const [lbl3, setLbl3] = useState();
   const [lbl4, setLbl4] = useState();
   const [lbl5, setLbl5] = useState();
+  const [lbl6, setLbl6] = useState();
 
   //handling data for first level list
   useEffect(() => {
@@ -49,6 +51,11 @@ const TaxonomyListSelect = () => {
     }
     setLbl1(lbl);
     setSLevel(check);
+    // for state reset
+    setTLevel("");
+    setFourLevel("");
+    setFiveLevel("");
+    setSixLevel("");
   };
 
   //handling data for third level list
@@ -68,6 +75,10 @@ const TaxonomyListSelect = () => {
     }
     setLbl2(lbl);
     setTLevel(check);
+    // for state reset
+    setFourLevel("");
+    setFiveLevel("");
+    setSixLevel("");
   };
 
   //handling data for four level list
@@ -87,6 +98,9 @@ const TaxonomyListSelect = () => {
     }
     setLbl3(lbl);
     setFourLevel(check);
+    // for state reset
+    setFiveLevel("");
+    setSixLevel("");
   };
 
   //handling data for Five level list
@@ -106,6 +120,27 @@ const TaxonomyListSelect = () => {
     }
     setLbl4(lbl);
     setFiveLevel(check);
+    // for state reset
+    setSixLevel("");
+  };
+
+  //handling data for six level list
+  const handleSixLevel = (lbl) => {
+    const check = [];
+    for (const elem of data) {
+      if (elem.includes(lbl) && elem.includes(">")) {
+        const arr = elem.trim().split(">");
+        const found = check.some((el) => el?.label?.trim() === arr[5]?.trim());
+        if (!found) {
+          check.push({
+            label: arr[5],
+            value: arr[5],
+          });
+        }
+      }
+    }
+    setLbl5(lbl);
+    setSixLevel(check);
   };
 
   //select options
@@ -144,12 +179,14 @@ const TaxonomyListSelect = () => {
       value: "5",
     },
   ];
+  const optionsLbl6 = [
+    {
+      group: fiveLevel,
+      label: "Select your low level category",
+      value: "5",
+    },
+  ];
 
-  console.log("1", lbl1);
-  console.log("2", lbl2);
-  console.log("3", lbl3);
-  console.log("4", lbl4);
-  console.log("5", lbl5);
   return (
     <div>
       <Card>
@@ -195,10 +232,20 @@ const TaxonomyListSelect = () => {
           <Select
             dropDownheight={600}
             name="Select low level"
-            onChange={(e) => setLbl5(e)}
+            onChange={(e) => handleSixLevel(e)}
             options={optionsLbl5}
             required
             value={lbl5}
+          />
+        )}
+        {sixLevel?.length > 1 && (
+          <Select
+            dropDownheight={600}
+            name="Select low level"
+            onChange={(e) => setLbl6(e)}
+            options={optionsLbl6}
+            required
+            value={lbl6}
           />
         )}
       </Card>
