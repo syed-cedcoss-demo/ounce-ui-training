@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { useFetcher, useSubmit } from "react-router-dom";
 import Form from "../components/home/CreateForm";
 import List from "../components/home/List";
+import Toast from "../components/shared/CustomToast";
+
 const TaskDay3 = () => {
   const [data, setData] = useState([]);
   const [name, setName] = useState();
@@ -10,6 +11,10 @@ const TaskDay3 = () => {
 
   const handleCreate = () => {
     const newData = data?.length ? [...data] : [];
+    if (!name || !age || !gender) {
+      Toast("error");
+      return 0;
+    }
     newData.push({
       name,
       age: age.toString()?.substring(0, 16),
