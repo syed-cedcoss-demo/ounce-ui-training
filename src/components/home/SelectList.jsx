@@ -1,4 +1,4 @@
-import { Select, Card, ButtonDropdown } from "@cedcommerce/ounce-ui";
+import { Select, Card } from "@cedcommerce/ounce-ui";
 import { useState, useEffect } from "react";
 const SelectList = ({ data }) => {
   const [option, setOption] = useState();
