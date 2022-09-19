@@ -39,30 +39,6 @@ const SelectList = ({ data }) => {
           thickness="thin"
         />
       </Card>
-      {/* <Card title="using dropdown button">
-        <ButtonDropdown
-          list={[
-            {
-              //   icon: <Home size={20} />,
-              label: "Dropdown Item 1",
-              onClick: function noRefCheck() {},
-            },
-            {
-              //   icon: <Home size={20} />,
-              label: "Dropdown Item 2",
-              onClick: function noRefCheck() {},
-            },
-            {
-              //   icon: <Home size={20} />,
-              label: "Dropdown Item 3",
-              onClick: function noRefCheck() {},
-            },
-          ]}
-          thickness="large"
-          title="More Actions"
-          type="none"
-        />
-      </Card> */}
     </div>
   );
 };
