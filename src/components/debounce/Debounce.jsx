@@ -1,30 +1,29 @@
 import { Button } from "@cedcommerce/ounce-ui";
-import { useState } from "react";
+import { getCall } from "../../APIs/Apis";
 
 const Debounce = () => {
-  const [status, setStatus] = useState(false);
+  const getData = async () => {
+    const data = await getCall("https://jsonplaceholder.typicode.com/photos");
+    console.log("data", data);
+  };
+
+  //*********Debouncing login **************** */
   let isReady = true;
   const btnClick = () => {
-    const waiter = () => {
-      isReady = true;
-      setStatus(!isReady);
-    };
+    const waiter = () => (isReady = true);
+
     if (isReady) {
       console.log("Call", isReady);
       isReady = false;
-      setStatus(!isReady);
       clearTimeout(waiter);
       setTimeout(() => waiter(), 3000);
+      getData();
     }
   };
+
   return (
     <div className="select-container">
-      <Button
-        content="Click for load"
-        type="Primary"
-        onClick={btnClick}
-        loading={status}
-      />
+      <Button content="Click for load" type="Primary" onClick={btnClick} />
     </div>
   );
 };
