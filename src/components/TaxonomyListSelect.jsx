@@ -1,4 +1,4 @@
-import { Card, Select } from "@cedcommerce/ounce-ui";
+import { Card, Select, Tag } from "@cedcommerce/ounce-ui";
 import { useState } from "react";
 import { useEffect } from "react";
 import allData from "./data";
@@ -186,7 +186,53 @@ const TaxonomyListSelect = () => {
       value: "5",
     },
   ];
+  const handleRemove = (id) => {
+    console.log("id", id);
+    if (id === 1) {
+      setSLevel("");
+      setTLevel("");
+      setFourLevel("");
+      setFiveLevel("");
+      setSixLevel("");
+      setLbl1("no");
+      setLbl2("no");
+      setLbl3("no");
+      setLbl4("no");
+      setLbl5("no");
+      setLbl6("no");
+    } else if (id === 2) {
+      setTLevel("");
+      setFourLevel("");
+      setFiveLevel("");
+      setSixLevel("");
+      setLbl2("no");
+      setLbl3("no");
+      setLbl4("no");
+      setLbl5("no");
+      setLbl6("no");
+    } else if (id === 3) {
+      setFourLevel("");
+      setFiveLevel("");
+      setSixLevel("");
+      setLbl3("no");
+      setLbl4("no");
+      setLbl5("no");
+      setLbl6("no");
+    } else if (id === 4) {
+      setFiveLevel("");
+      setSixLevel("");
 
+      setLbl4("no");
+      setLbl5("no");
+      setLbl6("no");
+    } else if (id === 5) {
+      setSixLevel("");
+      setLbl5("no");
+      setLbl6("no");
+    } else if (id === 3) {
+      setLbl6("no");
+    }
+  };
   return (
     <div>
       <Card>
@@ -198,6 +244,10 @@ const TaxonomyListSelect = () => {
           required
           value={lbl1}
         />
+        {lbl1 && lbl1 !== "no" && (
+          <Tag destroy={() => handleRemove(1)}> {lbl1}</Tag>
+        )}
+
         {sLevel?.length > 0 && (
           <Select
             dropDownheight={600}
@@ -206,7 +256,11 @@ const TaxonomyListSelect = () => {
             options={optionsLbl2}
             required
             value={lbl2}
+            showBadges={true}
           />
+        )}
+        {lbl2 && lbl2 !== "no" && (
+          <Tag destroy={() => handleRemove(2)}> {lbl1}</Tag>
         )}
         {tLevel?.length > 1 && (
           <Select
@@ -218,6 +272,9 @@ const TaxonomyListSelect = () => {
             value={lbl3}
           />
         )}
+        {lbl3 && lbl3 !== "no" && (
+          <Tag destroy={() => handleRemove(3)}> {lbl3}</Tag>
+        )}
         {fourLevel?.length > 1 && (
           <Select
             dropDownheight={600}
@@ -227,6 +284,9 @@ const TaxonomyListSelect = () => {
             required
             value={lbl4}
           />
+        )}
+        {lbl4 && lbl4 !== "no" && (
+          <Tag destroy={() => handleRemove(4)}> {lbl4}</Tag>
         )}
         {fiveLevel?.length > 1 && (
           <Select
@@ -238,6 +298,9 @@ const TaxonomyListSelect = () => {
             value={lbl5}
           />
         )}
+        {lbl5 && lbl5 !== "no" && (
+          <Tag destroy={() => handleRemove(5)}> {lbl5}</Tag>
+        )}
         {sixLevel?.length > 1 && (
           <Select
             dropDownheight={600}
@@ -247,6 +310,9 @@ const TaxonomyListSelect = () => {
             required
             value={lbl6}
           />
+        )}
+        {lbl6 && lbl6 !== "no" && (
+          <Tag destroy={() => handleRemove(6)}> {lbl1}</Tag>
         )}
       </Card>
     </div>
