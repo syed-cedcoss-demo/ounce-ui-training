@@ -1,10 +1,10 @@
-import { Select, Card } from "@cedcommerce/ounce-ui";
+import { Select, Card, Badge } from "@cedcommerce/ounce-ui";
 import { useState, useEffect } from "react";
 const SelectList = ({ data }) => {
   const [option, setOption] = useState();
+  const [selectedData, setSelectedData] = useState();
 
   useEffect(() => {
-    console.log("data", data);
     const lbl = [];
     if (data?.length) {
       for (const el of data) {
@@ -19,8 +19,7 @@ const SelectList = ({ data }) => {
       <Card title="using select">
         <Select
           dropDownheight={250}
-          // name="Name"
-          onChange={function noRefCheck() {}}
+          onChange={(e) => setSelectedData(e)}
           options={[
             {
               group: [],
@@ -29,15 +28,25 @@ const SelectList = ({ data }) => {
             },
             {
               group: option,
-              label: "Collection Of headings",
-              value: "2.0",
+              label: "Second collection",
+              value: "Value of second collection",
             },
           ]}
           placeholder="Select Todo"
           popoverContainer="element"
-          // selectHelp="Write help text here"
           thickness="thin"
         />
+        <br />
+        {selectedData && (
+          <Badge
+            helpText="This is the selected value of dropdown"
+            position="bottom"
+            size="small"
+            type="Positive-200"
+          >
+            {selectedData}
+          </Badge>
+        )}
       </Card>
     </div>
   );
